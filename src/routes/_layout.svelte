@@ -2,7 +2,9 @@
 	import Navbar from "../components/Navbar/Navbar.svelte";
 	import Footer from "../components/Footer.svelte";
 	import TopHeader from "../components/Navbar/TopHeader.svelte";
-	import Nav from "../components/Nav.svelte";
+	import ModalGaleria from "../components/Galeria/ModalGaleria.svelte";
+
+	import globalStore from "../stores/globalStore";
 </script>
 
 <style>
@@ -18,6 +20,9 @@
 
 <TopHeader />
 <Navbar />
+{#if $globalStore.modal_galeria}
+	<ModalGaleria />
+{/if}
 <main>
 	<slot />
 </main>

@@ -1,38 +1,30 @@
 <script>
   import globalStore from "../../stores/globalStore";
   import galeria, { iterarItem } from "../../stores/galeria";
-  import { loop_guard } from "svelte/internal";
-
-  export let setTitulo;
-  export let setDescripcion;
-  export let setPortada;
-  export let setImagenes;
-  export let setTags;
-
-  let imgRender = setPortada;
-  let imgSelected = false;
+  //TODO: Con la galeria intentar mostrar mas imagenes sobre el tema,
+  //en teoria por el "tag".
+  import { onMount } from "svelte";
+  let itemModal = $globalStore.item_modal;
+  let imgRender = itemModal.portada;
   function imgActive(img) {
     imgRender = img;
   }
-  function init(el) {
-    el.focus();
-  }
+  $: console.log(itemModal);
 </script>
 
 <style>
   .btn-close {
     position: absolute;
-    top: 5px;
-    right: 5px;
-    text-align: right;
+    top: 7px;
+    right: 7px;
     cursor: pointer;
-    padding: 5px 13px;
-    font-size: 1.7em;
-    background: transparent;
+    padding: 16px;
+    background-color: #68686826;
     border: none;
-    text-transform: lowercase;
-    color: rgb(88, 88, 88);
     transition: var(--transition);
+  }
+  .btn-close:hover{
+    background-color: #2b2b2b70;
   }
   .btn-close:hover {
     color: var(--color-primario);
@@ -51,76 +43,88 @@
   }
   .modal-galeria {
     position: relative;
-    display: grid;
-    grid-template-columns: 1fr;
-    color: white;
-    padding: 20px;
-    background-color: #222;
+    display: flex;
+    flex-direction: column;
+    color: #333333;
+    background-color: #f4f4f4;
     width: 100%;
-    min-height: 90vh;
-    max-height: 90vh;
+    min-height: 95vh;
+    max-height: 95vh;
   }
-  .modal-galeria__thumbnail {
+  .modal-galeria__portada {
+    display: flex;
+    flex-grow: 1;
+    flex-basis: 50%;
+    width: 100%;
+    height: 1px;
+    box-sizing: border-box;
     padding: 10px;
-    min-height: 300px;
   }
-  .modal-galeria__thumbnail img {
-    max-width: 350px;
+  .modal-galeria__portada img {
+    object-fit: contain;
+    width: 100%;
+    max-height: 100%;
   }
-  .content__titulo {
+  .modal-galeria__content {
+    background-color: white;
+    border-top: 1px solid #e6e6e6;
+    padding: 15px;
+  }
+  .modal-galeria__content__titulo {
     font-size: 1.2em;
     margin: 5px 0;
   }
-  .content__descripcion {
+  .modal-galeria__content__descripcion {
     font-size: 0.8em;
     color: rgb(153, 153, 153);
     font-weight: 500;
   }
-  .content__full-imagenes {
+  .modal-galeria__content__imagenes {
     display: grid;
-    grid-template-columns: repeat(auto-fit, minmax(50px, 1fr));
+    grid-template-columns: repeat(auto-fit, minmax(90px, 1fr));
     gap: 10px;
-    background-color: rgb(44, 44, 44);
-    padding: 10px;
   }
-  .content__full-imagenes img {
+  .modal-galeria__content__imagenes img {
     cursor: pointer;
-    min-height: 150px;
+    height: 110px;
     object-fit: cover;
   }
-  .content__full-imagenes img:focus {
-    outline: 3px solid var(--color-primario);
-  }
+
   .selected {
-    border: 3px solid rgb(156, 156, 156);
+    outline: 3px solid var(--color-primario);
   }
 </style>
 
 <div class="bg-modal-galeria k-flex">
   <div class="modal-galeria k-flex">
     <button
-      class="btn-close nav-sidebar__link"
+      class="btn-close"
       on:click={() => {
         globalStore.toggleItem('modal_galeria', false);
       }}>
-      <i class="far fa-times-circle" />
+      <img src="close.svg" alt="" />
     </button>
-    <div class="modal-galeria__thumbnail k-flex">
-      <img src={imgRender} alt="" />
-    </div>
+    <div class="modal-galeria__portada"><img src={imgRender} alt="" /></div>
     <div class="modal-galeria__content">
-      <h1 class="content__titulo">{setTitulo}</h1>
-      <p class="content__descripcion">{setDescripcion}</p>
-      <div class="content__full-imagenes k-flex">
-        <img on:click={imgActive(setPortada)}
-        tabindex="0"
-        class:selected={imgSelected} src={setPortada} alt="" />
-        {#each setImagenes as full_imagenes}
+      <h1 class="modal-galeria__content__titulo">{itemModal.titulo}</h1>
+      <p class="modal-galeria__content__descripcion">{itemModal.descripcion}</p>
+      <div class="modal-galeria__content__imagenes">
+        <img
+          on:click={() => {
+            imgActive(itemModal.portada);
+          }}
+          tabindex="0"
+          class:selected={itemModal.portada === imgRender ? true : false}
+          src={itemModal.portada}
+          alt="" />
+        {#each itemModal.imagenes as imagenes}
           <img
-            on:click={imgActive(full_imagenes)}
+            on:click={() => {
+              imgActive(imagenes);
+            }}
             tabindex="0"
-            class:selected={imgSelected}
-            src={full_imagenes}
+            class:selected={imagenes === imgRender ? true : false}
+            src={imagenes}
             alt="" />
         {/each}
       </div>

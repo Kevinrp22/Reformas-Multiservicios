@@ -53,6 +53,10 @@ img {
 	width: 100%;
 }
 
+img:focus {
+	outline: none;
+}
+
 a {
 	color: rgb(0, 100, 200);
 	text-decoration: none;

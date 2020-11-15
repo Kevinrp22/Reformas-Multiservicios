@@ -8,27 +8,8 @@
 
   import { fade , fly} from "svelte/transition";
   
-
-  let setId;
-  let setTitulo;
-  let setDescripcion;
-  let setPortada;
-  let setImagenes;
-  let setTags;
   let imagenes = [];
-  let fruits = ["apple", "banana", "grapes", "mango", "orange"];
-  function iterarItem(id) {
-    let item = $galeria.find((item) => {
-      return item.id === id;
-    });
-    setId = item.id;
-    setTitulo = item.titulo;
-    setDescripcion = item.descripcion;
-    setPortada = item.portada;
-    setImagenes = item.imagenes;
-    setTags = item.tags;
-  }
-  setContext("iterarItem", iterarItem);
+  
   $: {
     imagenes = $galeria.filter((item, index) => {
       index = 0;
@@ -60,16 +41,8 @@
   {#each imagenes as item_galeria (item_galeria.id) }
     <div in:fade="{{y: -200,duration: 100,delay:100 }}" 
     out:fade="{{ y: 200, duration: 100,delay:100 }}">
-      <ItemGaleria {item_galeria} {iterarItem} />
+      <ItemGaleria {item_galeria}/>
     </div>
   {/each}
-  {#if $globalStore.modal_galeria}
-    <ModalGaleria
-      {setId}
-      {setTitulo}
-      {setDescripcion}
-      {setPortada}
-      {setImagenes}
-      {setTags} />
-  {/if}
+ 
 </div>

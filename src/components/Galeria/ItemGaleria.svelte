@@ -1,8 +1,16 @@
 <script>
   import globalStore from "../../stores/globalStore";
+  import galeria from "../../stores/galeria";
   import { blur } from "svelte/transition";
-  export let iterarItem;
+  import ModalGaleria from "./ModalGaleria.svelte";
+
   export let item_galeria;
+
+  function filterItemToModal(id) {
+    return $galeria.find((item) => {
+      return item.id === id;
+    });
+  }
   let isHover = false;
 </script>
 
@@ -55,8 +63,7 @@
     line-height: 1;
   }
   .tag_item:hover {
-    background-color:rgb(255, 255, 255) ;
-
+    background-color: rgb(255, 255, 255);
   }
 </style>
 
@@ -69,8 +76,8 @@
     isHover = false;
   }}
   on:click={() => {
-    iterarItem(item_galeria.id);
     globalStore.toggleItem('modal_galeria', true);
+    globalStore.toggleItem('item_modal', filterItemToModal(item_galeria.id));
   }}>
   <img src={item_galeria.portada} alt={item_galeria.titulo} />
   <div class="tags">
@@ -78,7 +85,7 @@
       <span
         class="tag_item"
         on:click={() => {
-          console.log('go to ' + tag);
+          console.log('go to ' + tag.nombre);
         }}>
         {tag.nombre}
       </span>
@@ -90,5 +97,5 @@
       <h1 class="bg-hover__titulo">{item_galeria.titulo}</h1>
     </div>
   {/if}
-
 </div>
+
