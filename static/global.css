@@ -58,7 +58,7 @@ img:focus {
 }
 
 a {
-	color: rgb(0, 100, 200);
+	color: unset;
 	text-decoration: none;
 }
 
@@ -71,7 +71,6 @@ label {
 }
 
 input,
-button,
 select,
 textarea {
 	font-family: inherit;
@@ -80,6 +79,12 @@ textarea {
 	box-sizing: border-box;
 	border: 1px solid #ccc;
 	border-radius: 2px;
+}
+
+button {
+	font-family: inherit;
+	font-size: inherit;
+	border: none;
 }
 
 input:disabled {

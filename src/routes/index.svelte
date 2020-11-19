@@ -1,14 +1,13 @@
 <script>
 	import ListaServicios from "../components/Categorias/ListaCategorias.svelte";
 	import ListaDestacada from "../components/Galeria/ListaDestacada.svelte";
-	//TODO: Crear todos los servicios posibles, mirar de añadir count_visits 
+	//TODO: Crear todos los servicios posibles, mirar de añadir count_visits
 	//a las categorias y los servicios para mejorar el "destacado"
-	//TODO: Mirar de añadir a las servicios, imagenes segun el tipo 
+	//TODO: Mirar de añadir a las servicios, imagenes segun el tipo
 	//*queremos que en el servicio seleccionado aparescan imagenes del tipo*
 </script>
 
 <style>
-	
 	/* 
   ====== 
   SECCION BIENVENIDA
@@ -196,7 +195,7 @@
 			<br />
 			Más de 20 años de experiencia en el sector
 		</p>
-		<a href="/servicios" class="btn">Pedir Presupuesto</a>
+		<button class="btn"> <a href="/servicios">Pedir Presupuesto</a> </button>
 	</div>
 </section>
 <section class="c-busqueda" id="c-busqueda">

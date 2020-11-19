@@ -2,13 +2,13 @@ import {
   writable
 } from "svelte/store"
 import URL from "../strapi/URL"
-import getServicios from "../strapi/getServicios"
+import getCategorias from "../strapi/getCategorias"
 const servicios = writable([], () => {
   setServicios()
   return () => {}
 });
 async function setServicios() {
-  let _servicios = await getServicios()
+  let _servicios = await getCategorias()
   if (_servicios) {
     _servicios = flattenProducts(_servicios)
     servicios.set(_servicios)

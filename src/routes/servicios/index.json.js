@@ -1,8 +1,8 @@
-import getServicios from "../../strapi/getServicios"
+import getCategorias from "../../strapi/getCategorias"
 import URL from "../../strapi/URL"
 let servicios;
 async function setServicios() {
-	servicios = await getServicios()
+	servicios = await getCategorias()
 	servicios = JSON.stringify(servicios.map(post => {
 		return {
 			titulo: post.titulo,

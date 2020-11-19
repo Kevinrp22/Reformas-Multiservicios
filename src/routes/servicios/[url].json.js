@@ -1,8 +1,8 @@
-import getServicios from "../../strapi/getServicios"
+import getCategorias from "../../strapi/getCategorias"
 let lookup;
 
 async function setServicios() {
-	let servicios = await getServicios();
+	let servicios = await getCategorias();
 	lookup = new Map();
 	servicios.forEach((post) => {
 		lookup.set(post.url, JSON.stringify(post));

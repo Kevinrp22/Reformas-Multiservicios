@@ -1,5 +1,5 @@
 <script>
-  import servicios from "../../stores/servicios";
+  import servicios from "../../stores/categorias";
   import ItemCategoria from "./ItemCategorias.svelte";
 </script>
 <style>

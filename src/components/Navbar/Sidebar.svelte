@@ -1,21 +1,24 @@
 <script>
-  import {onMount} from "svelte"
+  import { onMount } from "svelte";
 
   import globalStore from "../../stores/globalStore";
   import { fly, fade } from "svelte/transition";
 
-  onMount(()=>{
-    let links = document.querySelectorAll(".sidebar a")
-    links.forEach((link)=>link.addEventListener("click",()=>{
-      globalStore.toggleItem("sidebar", false)
-    }))
-  })
+  onMount(() => {
+    let links = document.querySelectorAll(".sidebar a");
+    links.forEach((link) =>
+      link.addEventListener("click", () => {
+        globalStore.toggleItem("sidebar", false);
+      })
+    );
+  });
 </script>
 
 <style>
   .fondo-sidebar {
     background-color: rgba(61, 61, 61, 0.651);
     position: fixed;
+    top: 0;
     width: 100%;
     height: 100%;
     z-index: 20;
