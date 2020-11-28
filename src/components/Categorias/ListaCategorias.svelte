@@ -1,5 +1,5 @@
 <script>
-  import servicios from "../../stores/categorias";
+  import cateogorias from "../../stores/categorias";
   import ItemCategoria from "./ItemCategorias.svelte";
 </script>
 <style>
@@ -25,7 +25,7 @@
 }
 </style>
 <div class="c-cards" id="c-cards">
-  {#each $servicios as servicio}
-    <ItemCategoria {servicio}/>
+  {#each $cateogorias as categoria}
+    <ItemCategoria {categoria}/>
   {/each}
 </div>

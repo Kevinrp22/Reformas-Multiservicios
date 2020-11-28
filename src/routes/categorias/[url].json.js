@@ -1,15 +1,15 @@
 import getCategorias from "../../strapi/getCategorias"
 let lookup;
 
-async function setServicios() {
-	let servicios = await getCategorias();
+async function setCategorias() {
+	let categorias = await getCategorias();
 	lookup = new Map();
-	servicios.forEach((post) => {
+	categorias.forEach((post) => {
 		lookup.set(post.url, JSON.stringify(post));
 	});
 }
 
-setServicios();
+setCategorias();
 
 export function get(req, res, next) {
 	// the `url` parameter is available because

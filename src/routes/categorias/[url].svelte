@@ -2,11 +2,11 @@
 	export async function preload({ params }) {
 		// the `url` parameter is available because
 		// this file is called [url].svelte
-		const res = await this.fetch(`servicios/${params.url}.json`);
+		const res = await this.fetch(`categorias/${params.url}.json`);
 		const data = await res.json();
 
 		if (res.status === 200) {
-			return { servicios: data };
+			return { categorias: data };
 		} else {
 			this.error(res.status, data.message);
 		}
@@ -14,8 +14,7 @@
 </script>
 
 <script>
-	export let servicios;
-	$:console.log(servicios)
+	export let categorias;
 </script>
 
 <style>
@@ -55,12 +54,12 @@
 </style>
 
 <svelte:head>
-	<title>{servicios.titulo}</title>
+	<title>{categorias.titulo}</title>
 </svelte:head>
 
-<h1>{servicios.titulo}</h1>
+<h1>{categorias.titulo}</h1>
 
 <div class="content">
-	{@html servicios.contenido}
+	{@html categorias.contenido}
 </div>
  

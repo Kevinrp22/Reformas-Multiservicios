@@ -77,7 +77,7 @@
     </div>
     <div class="menu">
       <a href="/">Inicio</a>
-      <a href="/servicios">servicios</a>
+      <a href="/categorias">servicios</a>
       <a href="/galeria">Galeria</a>
       <a href="/about">Quienes somos</a>
       <a href="/contacto">Contacto</a>
