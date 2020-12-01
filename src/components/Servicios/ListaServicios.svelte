@@ -1,6 +1,6 @@
 <script>
-  import categorias from "../../stores/categorias";
-  import ItemCategoria from "./ItemCategorias.svelte";
+  export let servicios;
+  import ItemServicios from "./ItemServicios.svelte";
 </script>
 
 <style>
@@ -11,7 +11,7 @@
     justify-content: center;
     flex-wrap: wrap;
     align-items: center;
-    width: 1100px;
+    max-width: 1100px;
     padding-top: 80px;
   }
   @media screen and (min-width: 500px) {
@@ -27,7 +27,7 @@
 </style>
 
 <div class="c-cards" id="c-cards">
-  {#each $categorias as categoria}
-    <ItemCategoria {categoria} />
+  {#each servicios as servicio}
+    <ItemServicios {servicio} />
   {/each}
 </div>

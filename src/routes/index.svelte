@@ -5,6 +5,7 @@
 	//a las categorias y los servicios para mejorar el "destacado"
 	//TODO: Mirar de añadir a las servicios, imagenes segun el tipo
 	//*queremos que en el servicio seleccionado aparescan imagenes del tipo*
+	
 </script>
 
 <style>

@@ -1,4 +1,4 @@
- <script context="module">
+<script context="module">
 	export async function preload({ params }) {
 		// the `url` parameter is available because
 		// this file is called [url].svelte
@@ -14,6 +14,8 @@
 </script>
 
 <script>
+	import ListaServicios from "../../components/Servicios/ListaServicios.svelte";
+
 	export let categorias;
 </script>
 
@@ -58,8 +60,8 @@
 </svelte:head>
 
 <h1>{categorias.titulo}</h1>
-
+<img src={categorias.portada} alt="" />
 <div class="content">
 	{@html categorias.contenido}
 </div>
- 
+<ListaServicios servicios={categorias.servicios} />

@@ -15,9 +15,36 @@
 // Este archivo se llama `_posts.js` en lugar de` posts.js`, porque
 // no queremos crear una ruta `/ blog / posts` - la principal
 // El subrayado le dice a Sapper que no haga eso.
-/* import getServicios from "../../strapi/getServicios"
-async function setServicios() {
-  const servicios = await getServicios()
+/* import URL from "../../strapi/URL"
+import getCategorias from "../../strapi/getCategorias"
+export default async () => {
+  let categorias = ""
+  categorias = await getCategorias()
+  categorias = flattenProducts(categorias)
+  return categorias
 }
-setServicios()
-export default servicios; */
+
+function flattenProducts(data) {
+  return data.map((item, index) => {
+    let portada = URL + item.portada.url
+    let servicios = item.servicios.map(servicio => {
+      let portada = URL + servicio.portada.url
+      return {
+        ...servicio,
+        portada
+      }
+    })
+    return {
+      ...item,
+      portada,
+      servicios
+    }
+  });
+
+
+} */
+
+/* 
+ESTABA PLANTEADO PARA HACERLO AQUI, PERO UNA MJEOR MANERA
+ES DESDE STRAPI/GETCATEGORIAS.JS
+*/
