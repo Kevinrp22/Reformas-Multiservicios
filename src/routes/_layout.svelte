@@ -11,10 +11,7 @@
 <style>
 	main {
 		position: relative;
-		max-width: 90em;
 		background-color: white;
-		padding: 0.5em;
-		margin: 0 auto;
 		box-sizing: border-box;
 	}
 </style>

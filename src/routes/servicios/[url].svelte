@@ -2,11 +2,11 @@
 	export async function preload({ params }) {
 		// the `url` parameter is available because
 		// this file is called [url].svelte
-		const res = await this.fetch(`categorias/${params.url}.json`);
+		const res = await this.fetch(`servicios/${params.url}.json`);
 		const data = await res.json();
 
 		if (res.status === 200) {
-			return { categorias: data };
+			return { servicios: data };
 		} else {
 			this.error(res.status, data.message);
 		}
@@ -14,10 +14,10 @@
 </script>
 
 <script>
-	import ListaGaleriaDestacada from "../../components/Galeria/ListaGaleriaDestacada.svelte";
 	import ListaServicios from "../../components/Servicios/ListaServicios.svelte";
 
-	export let categorias;
+	export let servicios;
+	$:console.log(servicios);
 </script>
 
 <style>
@@ -57,14 +57,13 @@
 </style>
 
 <svelte:head>
-	<title>{categorias.titulo}</title>
+	<title>{servicios.titulo}</title>
 </svelte:head>
 
-<h1>{categorias.titulo}</h1>
-<img src={categorias.portada} alt="" />
+<h1>{servicios.titulo}</h1>
+<img src={servicios.portada} alt="" />
 <div class="content">
-	{@html categorias.contenido}
+	{@html servicios.contenido}
 </div>
-<ListaServicios servicios={categorias.servicios} />
-<h1>Algunas Obras destacadas</h1>
-<ListaGaleriaDestacada />
+<!-- 
+<ListaServicios servicios={servicios.servicios} /> -->

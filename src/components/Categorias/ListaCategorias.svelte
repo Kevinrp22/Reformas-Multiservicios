@@ -11,7 +11,7 @@
     justify-content: center;
     flex-wrap: wrap;
     align-items: center;
-    width: 1100px;
+    max-width: 1100px;
     padding-top: 80px;
   }
   @media screen and (min-width: 500px) {

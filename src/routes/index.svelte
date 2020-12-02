@@ -1,6 +1,6 @@
 <script>
 	import ListaServicios from "../components/Categorias/ListaCategorias.svelte";
-	import ListaDestacada from "../components/Galeria/ListaDestacada.svelte";
+	import ListaDestacada from "../components/Galeria/ListaGaleriaDestacada.svelte";
 	//TODO: Crear todos los servicios posibles, mirar de añadir count_visits
 	//a las categorias y los servicios para mejorar el "destacado"
 	//TODO: Mirar de añadir a las servicios, imagenes segun el tipo

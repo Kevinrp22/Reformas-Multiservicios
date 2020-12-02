@@ -1,6 +1,7 @@
 <script>
-  export let servicios;
   import ItemServicios from "./ItemServicios.svelte";
+
+  export let servicios;
 </script>
 
 <style>
@@ -11,8 +12,6 @@
     justify-content: center;
     flex-wrap: wrap;
     align-items: center;
-    max-width: 1100px;
-    padding-top: 80px;
   }
   @media screen and (min-width: 500px) {
     .c-cards {

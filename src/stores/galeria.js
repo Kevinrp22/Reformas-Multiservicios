@@ -20,10 +20,8 @@ async function setImagenes() {
 
 function flattenProducts(data) {
   return data.map(item => {
-    /* let image = item.image.URL; */
     let portada = URL + item.portada.url
-    let get_imagenes = item.imagenes
-    let imagenes = get_imagenes.map((item) => {
+    let imagenes = item.imagenes.map((item) => {
       return URL + item.url
     })
     return {

@@ -7,7 +7,7 @@ async function getCategorias() {
 }
 
 function flattenProducts(data) {
-  return data.map((item, index) => {
+  return data.map((item) => {
     let portada = URL + item.portada.url
     let servicios = item.servicios.map(servicio => {
       let portada = URL + servicio.portada.url

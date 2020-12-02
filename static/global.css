@@ -3,6 +3,7 @@
 	--color-texto: #707070;
 	--color-secundario: rgb(58, 58, 58);
 	--max-width: 1700px;
+	--max-width-content: 1000px;
 	--transition: all 0.5s ease;
 }
 
@@ -32,6 +33,8 @@
 	justify-content: center;
 	align-items: center;
 }
+
+
 
 
 h1,
@@ -81,6 +84,12 @@ textarea {
 	border-radius: 2px;
 }
 
+input:focus,
+select:focus,
+textarea:focus {
+	outline: none;
+}
+
 button {
 	font-family: inherit;
 	font-size: inherit;
@@ -90,6 +99,7 @@ button {
 input:disabled {
 	color: #ccc;
 }
+
 
 input[type="range"] {
 	height: 0;

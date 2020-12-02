@@ -1,4 +1,5 @@
 <script>
+
   export let servicio;
   const { url, titulo, portada } = servicio;
 </script>
@@ -67,7 +68,7 @@
 
 <div class="categoria" data={titulo}>
   <img src={portada} alt="" class="categoria__imagen" />
-  <a href={`/categorias/${url}`} class="categoria__background">
+  <a href={`/servicios/${url}`} class="categoria__background">
     <p class="categoria__titulo">{titulo}</p>
   </a>
 </div>
